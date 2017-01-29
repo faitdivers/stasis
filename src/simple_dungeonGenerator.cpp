@@ -22,7 +22,7 @@ TileMap SimpleDungeonGenerator::Generate()
 
 	MakeDungeon(map, rng);
 
-  map.load(STATIS_ROOT_PATH"gfx/world.png", sf::Vector2u(16, 16), xSize_, ySize_);
+  map.load(STASIS_ROOT_PATH"gfx/world.png", sf::Vector2u(16, 16), xSize_, ySize_);
 
 	return map;
 }

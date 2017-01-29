@@ -17,6 +17,10 @@ enum class Tile {
   DownStairs = 9 * 16
 };
 
+enum class Direction {
+  North, South, East, West,
+};
+
 class TileMap : public sf::Drawable, public sf::Transformable {
 public:
 

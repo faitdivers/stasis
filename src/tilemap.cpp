@@ -1,4 +1,5 @@
 #include "../inc/tilemap.hpp"
+#include <iostream>
 
 TileMap::TileMap(int xSize, int ySize) {
   xSize_ = xSize;
@@ -62,6 +63,7 @@ void TileMap::SetTile(int x, int y, Tile tiletype) {
   assert(IsXInBounds(x));
   assert(IsYInBounds(y));
 
+  //std::cout << "Placed Tile! " + std::to_string(x) + ", " + std::to_string(y) << std::endl;
   tileLevel[x + xSize_ * y] = static_cast<int>(tiletype);
 }
 

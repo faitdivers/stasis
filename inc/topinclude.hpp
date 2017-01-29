@@ -21,10 +21,10 @@
 #endif
 
 #if defined(_STASIS_LINUX) || defined(_STASIS_APPLE)
-#   define STATIS_ROOT_PATH 
+#   define STASIS_ROOT_PATH
 #endif
 #ifdef _STASIS_WINDOWS
-#   define STATIS_ROOT_PATH "../../"
+#   define STASIS_ROOT_PATH "../../"
 #endif
 
 #endif  //_DEF_TOPINCLUDE_H_

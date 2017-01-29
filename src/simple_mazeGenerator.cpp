@@ -12,14 +12,12 @@ SimpleMazeGenerator::SimpleMazeGenerator (int xSize, int ySize, float c, float d
     //Adjust complexity and density relative to maze size
     c_adj_ = static_cast<int>(c * ((shape_[0] + shape_[1])));
     d_adj_ = static_cast<int>(d * ((shape_[0]) + (shape_[1])));
-    //c_adj_ = 10;
-    //d_adj_ = 10;
 }
 
 TileMap SimpleMazeGenerator::Generate()
 {
     TileMap map = MakeMaze();
-    map.load(STATIS_ROOT_PATH"gfx/world.png", sf::Vector2u(16, 16), shape_[1], shape_[0]);
+    map.load(STASIS_ROOT_PATH"gfx/world.png", sf::Vector2u(16, 16), shape_[0], shape_[1]);
     return map;
 }
 

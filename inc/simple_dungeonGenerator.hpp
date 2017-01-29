@@ -5,10 +5,6 @@
 #include <SFML/Graphics.hpp>
 #include "../inc/tilemap.hpp"
 
-enum class Direction {
-  North, South, East, West,
-};
-
 // This class allows for the creation of dungeons containing:
 // - Square Rooms
 // - Straight Corridors

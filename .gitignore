@@ -1,11 +1,20 @@
-################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
+## Visual studio ignore
 
 /MVS/sfml_1st_example/x64/Release
 /MVS/x64/Release
 /MVS/stasis.VC.VC.opendb
 /MVS/stasis.VC.db
 /MVS/.vs/stasis/v14
-bin
+
+## CMake ignore
+CMakeCache.txt
+Makefile
+VERSION
+CMakeFiles/
+cmake_install.cmake
+
+## XCode ignore
 sfml_exp_xcode-Info.plist
+
+## Others
+bin/

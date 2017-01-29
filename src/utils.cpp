@@ -1,6 +1,6 @@
 #include "../inc/utils.hpp"
 
-void zoomViewAt(sf::Vector2i pixel, sf::RenderWindow& window, float zoom)
+sf::View zoomViewAt(sf::Vector2i pixel, sf::RenderWindow& window, float zoom)
 {
     const sf::Vector2f beforeCoord{ window.mapPixelToCoords(pixel) };
     sf::View view{ window.getView() };
@@ -10,4 +10,5 @@ void zoomViewAt(sf::Vector2i pixel, sf::RenderWindow& window, float zoom)
     const sf::Vector2f offsetCoords{ beforeCoord - afterCoord };
     view.move(offsetCoords);
     window.setView(view);
+    return view;
 }

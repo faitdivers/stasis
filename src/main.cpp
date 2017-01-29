@@ -12,10 +12,15 @@ int main() {
   int yMapSize = 100;
 
   // create a view with its center and size
+  sf::View defaultView(sf::Vector2f(xMapSize * 8, yMapSize * 8),
+                sf::Vector2f(xMapSize * 16, yMapSize * 16));
+  
   sf::View view(sf::Vector2f(xMapSize * 8, yMapSize * 8),
                 sf::Vector2f(xMapSize * 16, yMapSize * 16));
-
-  window.setView(view);
+  
+  int stepMove = 5;
+  
+  window.setView(defaultView);
   window.setFramerateLimit(60);
   
   //Simple Dungeon Generation
@@ -41,17 +46,35 @@ int main() {
         window.close();
       else if (event.type == sf::Event::KeyPressed)
       {
+        //When backspace is clicked go back to default view
         if (event.key.code == sf::Keyboard::BackSpace)
         {
+          window.setView(defaultView);
+          view = defaultView;
+        } else if(event.key.code == sf::Keyboard::Up)
+        {
+          view.move(0, -stepMove);
+          window.setView(view);
+        } else if(event.key.code == sf::Keyboard::Down)
+        {
+          view.move(0, stepMove);
+          window.setView(view);
+        } else if(event.key.code == sf::Keyboard::Right)
+        {
+          view.move(stepMove, 0);
+          window.setView(view);
+        } else if(event.key.code == sf::Keyboard::Left)
+        {
+          view.move(-stepMove, 0);
           window.setView(view);
         }
       }
       if (event.type == sf::Event::MouseWheelScrolled)
       {
         if (event.mouseWheelScroll.delta > 0)
-          zoomViewAt({ event.mouseWheelScroll.x, event.mouseWheelScroll.y }, window, (1.f / zoomAmount));
+          view = zoomViewAt({ event.mouseWheelScroll.x, event.mouseWheelScroll.y }, window, (1.f / zoomAmount));
         else if (event.mouseWheelScroll.delta < 0)
-          zoomViewAt({ event.mouseWheelScroll.x, event.mouseWheelScroll.y }, window, zoomAmount);
+          view = zoomViewAt({ event.mouseWheelScroll.x, event.mouseWheelScroll.y }, window, zoomAmount);
       }
     }
 

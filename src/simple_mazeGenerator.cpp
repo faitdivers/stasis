@@ -16,7 +16,7 @@ SimpleMazeGenerator::SimpleMazeGenerator (int xSize, int ySize, int c, int d)
 TileMap SimpleMazeGenerator::Generate()
 {
     TileMap map = MakeMaze();
-    map.load("gfx/world.png", sf::Vector2u(16, 16), shape_[1], shape_[0]);
+    map.load("../../gfx/world.png", sf::Vector2u(16, 16), shape_[1], shape_[0]);
     return map;
 }
 

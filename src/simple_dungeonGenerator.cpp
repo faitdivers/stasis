@@ -21,7 +21,7 @@ TileMap SimpleDungeonGenerator::Generate()
 
 	MakeDungeon(map, rng);
 
-  map.load("gfx/world.png", sf::Vector2u(16, 16), xSize_, ySize_);
+  map.load("../../gfx/world.png", sf::Vector2u(16, 16), xSize_, ySize_);
 
 	return map;
 }

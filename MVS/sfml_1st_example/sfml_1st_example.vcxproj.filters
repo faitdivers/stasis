@@ -15,12 +15,24 @@
     <ClInclude Include="..\..\inc\tilemap.hpp">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\inc\simple_mazeGenerator.hpp">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="topinclude.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\tilemap.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\main.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\simple_dungeonGenerator.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\simple_mazeGenerator.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
   </ItemGroup>

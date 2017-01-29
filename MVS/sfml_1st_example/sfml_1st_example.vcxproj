@@ -155,11 +155,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\main.cpp" />
+    <ClCompile Include="..\..\src\simple_dungeonGenerator.cpp" />
+    <ClCompile Include="..\..\src\simple_mazeGenerator.cpp" />
     <ClCompile Include="..\..\src\tilemap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\inc\simple_dungeonGenerator.hpp" />
+    <ClInclude Include="..\..\inc\simple_mazeGenerator.hpp" />
     <ClInclude Include="..\..\inc\tilemap.hpp" />
+    <ClInclude Include="topinclude.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

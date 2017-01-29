@@ -3,6 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <cassert>
+#include <vector>
 
 enum class Tile {
   Unused = 0,
@@ -41,7 +42,7 @@ private:
   sf::Texture tileset_;
   int xSize_;
   int ySize_;
-  int* tileLevel;
+  std::vector<int> tileLevel;
 };
 
 #endif

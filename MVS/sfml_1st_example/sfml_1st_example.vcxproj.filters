@@ -18,7 +18,7 @@
     <ClInclude Include="..\..\inc\simple_mazeGenerator.hpp">
       <Filter>Headers</Filter>
     </ClInclude>
-    <ClInclude Include="topinclude.h">
+    <ClInclude Include="..\..\inc\topinclude.hpp">
       <Filter>Headers</Filter>
     </ClInclude>
   </ItemGroup>

@@ -163,7 +163,7 @@
     <ClInclude Include="..\..\inc\simple_dungeonGenerator.hpp" />
     <ClInclude Include="..\..\inc\simple_mazeGenerator.hpp" />
     <ClInclude Include="..\..\inc\tilemap.hpp" />
-    <ClInclude Include="topinclude.h" />
+    <ClInclude Include="..\..\inc\topinclude.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

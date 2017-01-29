@@ -1,18 +1,18 @@
 #include "../inc/tilemap.hpp"
 
-TileMap::TileMap(int xSize, int ySize){
-    m_xSize = xSize;
-    m_ySize = ySize;
-    tileLevel = new int [xSize*ySize];
-    for (int i = 0; i < xSize*ySize; i++){
-    	tileLevel[i] = static_cast<int>(Tile::DefaultBkgIni) + rand() % 4;
-    }
+TileMap::TileMap(int xSize, int ySize) {
+  m_xSize = xSize;
+  m_ySize = ySize;
+  tileLevel = new int[xSize*ySize];
+  for (int i = 0; i < xSize*ySize; i++) {
+    tileLevel[i] = static_cast<int>(Tile::DefaultBkgIni) + rand() % 4;
+  }
 }
 
 bool TileMap::load(const std::string& tileset,
-          sf::Vector2u tileSize,
-          unsigned int width,
-          unsigned int height) {
+                   sf::Vector2u tileSize,
+                   unsigned int width,
+                   unsigned int height) {
   // load the tileset texture
   if (!m_tileset.loadFromFile(tileset))
     return false;
@@ -58,80 +58,73 @@ bool TileMap::load(const std::string& tileset,
   return true;
 }
 
-void TileMap::SetTile(int x, int y, Tile tiletype)
-{
-	assert(IsXInBounds(x));
-	assert(IsYInBounds(y));
+void TileMap::SetTile(int x, int y, Tile tiletype) {
+  assert(IsXInBounds(x));
+  assert(IsYInBounds(y));
 
-	tileLevel[x + m_xSize * y] = static_cast<int>(tiletype);
+  tileLevel[x + m_xSize * y] = static_cast<int>(tiletype);
 }
 
-void TileMap::SetTiles(int xStart, int yStart, int xEnd, int yEnd, Tile tiletype)
-{
-	assert(IsXInBounds(xStart) && IsXInBounds(xEnd));
-	assert(IsYInBounds(yStart) && IsYInBounds(yEnd));
+void TileMap::SetTiles(int xStart, int yStart, int xEnd, int yEnd, Tile tiletype) {
+  assert(IsXInBounds(xStart) && IsXInBounds(xEnd));
+  assert(IsYInBounds(yStart) && IsYInBounds(yEnd));
 
-	assert(xStart <= xEnd);
-	assert(yStart <= yEnd);
+  assert(xStart <= xEnd);
+  assert(yStart <= yEnd);
 
-	for (auto y = yStart; y != yEnd + 1; ++y)
-		for (auto x = xStart; x != xEnd + 1; ++x)
-			SetTile(x, y, tiletype);
+  for (auto y = yStart; y != yEnd + 1; ++y)
+    for (auto x = xStart; x != xEnd + 1; ++x)
+      SetTile(x, y, tiletype);
 }
 
-Tile TileMap::GetTile(int x, int y) const
-{
-	assert(IsXInBounds(x));
-	assert(IsYInBounds(y));
+Tile TileMap::GetTile(int x, int y) const {
+  assert(IsXInBounds(x));
+  assert(IsYInBounds(y));
 
-	return static_cast<Tile>(tileLevel[x + m_xSize * y]);
-}	
-
-bool TileMap::IsXInBounds(int x) const
-{
-	return x >= 0 && x < m_xSize;
+  return static_cast<Tile>(tileLevel[x + m_xSize * y]);
 }
 
-bool TileMap::IsYInBounds(int y) const
-{
-	return y >= 0 && y < m_ySize;
+bool TileMap::IsXInBounds(int x) const {
+  return x >= 0 && x < m_xSize;
+}
+
+bool TileMap::IsYInBounds(int y) const {
+  return y >= 0 && y < m_ySize;
 }
 
 //Checks if the Tile type is either unused or DefaultBkg
-bool TileMap::IsAreaUnused(int xStart, int yStart, int xEnd, int yEnd)
-{
-	assert(IsXInBounds(xStart) && IsXInBounds(xEnd));
-	assert(IsYInBounds(yStart) && IsYInBounds(yEnd));
+bool TileMap::IsAreaUnused(int xStart, int yStart, int xEnd, int yEnd) const {
+  assert(IsXInBounds(xStart) && IsXInBounds(xEnd));
+  assert(IsYInBounds(yStart) && IsYInBounds(yEnd));
 
-	assert(xStart <= xEnd);
-	assert(yStart <= yEnd);
+  assert(xStart <= xEnd);
+  assert(yStart <= yEnd);
 
-	for (auto y = yStart; y != yEnd + 1; ++y)
-		for (auto x = xStart; x != xEnd + 1; ++x)
-			if (GetTile(x, y) != Tile::Unused && 
-				(GetTile(x,y) < Tile::DefaultBkgIni && GetTile(x,y) > Tile::DefaultBkgEnd))
-				return false;
+  for (auto y = yStart; y != yEnd + 1; ++y)
+    for (auto x = xStart; x != xEnd + 1; ++x)
+      if (GetTile(x, y) != Tile::Unused &&
+        (GetTile(x, y) < Tile::DefaultBkgIni && GetTile(x, y) > Tile::DefaultBkgEnd))
+        return false;
 
-	return true;
+  return true;
 }
 
-bool TileMap::IsAdjacent(int x, int y, Tile tile)
-{
-	assert(IsXInBounds(x - 1) && IsXInBounds(x + 1));
-	assert(IsYInBounds(y - 1) && IsYInBounds(y + 1));
+bool TileMap::IsAdjacent(int x, int y, Tile tile) const {
+  assert(IsXInBounds(x - 1) && IsXInBounds(x + 1));
+  assert(IsYInBounds(y - 1) && IsYInBounds(y + 1));
 
-	return 
-		GetTile(x - 1, y) == tile || GetTile(x + 1, y) == tile ||
-		GetTile(x, y - 1) == tile || GetTile(x, y + 1) == tile;
+  return
+    GetTile(x - 1, y) == tile || GetTile(x + 1, y) == tile ||
+    GetTile(x, y - 1) == tile || GetTile(x, y + 1) == tile;
 }
 
 void TileMap::draw(sf::RenderTarget& target, sf::RenderStates states) const {
-	// apply the transform
-	states.transform *= getTransform();
+  // apply the transform
+  states.transform *= getTransform();
 
-	// apply the tileset texture
-	states.texture = &m_tileset;
+  // apply the tileset texture
+  states.texture = &m_tileset;
 
-	// draw the vertex array
-	target.draw(m_vertices, states);
+  // draw the vertex array
+  target.draw(m_vertices, states);
 }

@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/MVS/sfml_1st_example/x64/Release
+/MVS/x64/Release
+/MVS/stasis.VC.VC.opendb
+/MVS/stasis.VC.db
+/MVS/.vs/stasis/v14

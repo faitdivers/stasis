@@ -8,13 +8,14 @@ int main() {
 
   int xMapSize = 100;
   int yMapSize = 100;
-  
+
   // create a view with its center and size
-  sf::View view(sf::Vector2f(xMapSize*4, yMapSize*4), sf::Vector2f(xMapSize*8, yMapSize*8));
+  sf::View view(sf::Vector2f(xMapSize * 4, yMapSize * 4),
+                sf::Vector2f(xMapSize * 8, yMapSize * 8));
 
   window.setView(view);
 
-  SimpleDungeonGenerator dungeon1(xMapSize,yMapSize);
+  SimpleDungeonGenerator dungeon1(xMapSize, yMapSize);
   TileMap map = dungeon1.Generate();
 
   // run the main loop

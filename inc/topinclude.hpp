@@ -11,11 +11,16 @@
 #   define _STASIS_OSNAME "Linux"
 #endif
 
+#ifdef __APPLE__
+#   define _STASIS_APPLE
+#   define _STASIS_OSNAME "Apple"
+#endif
+
 #ifdef _STASIS_LINUX
 #include <assert.h>
 #endif
 
-#ifdef _STASIS_LINUX
+#if defined(_STASIS_LINUX) || defined(_STASIS_APPLE)
 #   define STATIS_ROOT_PATH 
 #endif
 #ifdef _STASIS_WINDOWS

@@ -22,5 +22,4 @@
 #   define STATIS_ROOT_PATH "../../"
 #endif
 
-
 #endif  //_DEF_TOPINCLUDE_H_

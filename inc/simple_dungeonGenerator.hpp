@@ -10,6 +10,13 @@ enum class Direction
 	North, South, East, West,
 };
 
+// This class allows for the creation of dungeons containing:
+// - Square Rooms
+// - Straight Corridors
+// - Doors
+// - Up and Down stairs
+//
+// It is not guaranteed that there is a path from stair to stair.
 class SimpleDungeonGenerator
 {
 public:

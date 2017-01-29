@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <cassert>
 
 enum class Tile
 {

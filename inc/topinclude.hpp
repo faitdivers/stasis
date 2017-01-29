@@ -15,4 +15,12 @@
 #include <assert.h>
 #endif
 
+#ifdef _STASIS_LINUX
+#   define STATIS_ROOT_PATH 
+#endif
+#ifdef _STASIS_WINDOWS
+#   define STATIS_ROOT_PATH "../../"
+#endif
+
+
 #endif  //_DEF_TOPINCLUDE_H_

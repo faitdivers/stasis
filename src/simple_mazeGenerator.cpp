@@ -1,4 +1,5 @@
 // C++ adaptation from https://en.wikipedia.org/wiki/Maze_generation_algorithm 
+#include "../inc/topinclude.hpp"
 #include "../inc/simple_mazeGenerator.hpp"
 #include <vector>
 
@@ -16,7 +17,7 @@ SimpleMazeGenerator::SimpleMazeGenerator (int xSize, int ySize, int c, int d)
 TileMap SimpleMazeGenerator::Generate()
 {
     TileMap map = MakeMaze();
-    map.load("../../gfx/world.png", sf::Vector2u(16, 16), shape_[1], shape_[0]);
+    map.load(STATIS_ROOT_PATH"gfx/world.png", sf::Vector2u(16, 16), shape_[1], shape_[0]);
     return map;
 }
 

@@ -9,7 +9,12 @@
 ## CMake ignore
 CMakeCache.txt
 Makefile
-bin/
 VERSION
 CMakeFiles/
 cmake_install.cmake
+
+## XCode ignore
+sfml_exp_xcode-Info.plist
+
+## Others
+bin/

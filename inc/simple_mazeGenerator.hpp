@@ -5,7 +5,7 @@
 class SimpleMazeGenerator 
 {
 public:
-	SimpleMazeGenerator(int xSize, int ySize, int c, int d);
+	SimpleMazeGenerator(int xSize, int ySize, float c, float d);
 	TileMap Generate();
 	
 private:
@@ -13,6 +13,6 @@ private:
 
 	typedef std::mt19937 RngT;
 	int shape_ [2];
-	int c_adj_; //complexity adjusted to room size
-	int d_adj_; //density adjusted to room size
+	float c_adj_; //complexity adjusted to room size
+	float d_adj_; //density adjusted to room size
 };

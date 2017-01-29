@@ -1,8 +1,8 @@
 #include <iostream>
-#include <SFML/Graphics.hpp>
 #include "../inc/simple_dungeonGenerator.hpp"
 #include "../inc/simple_mazeGenerator.hpp"
 #include "../inc/brownianGenerator.hpp"
+#include "../inc/utils.hpp"
 
 int main() {
   // create the window
@@ -16,7 +16,8 @@ int main() {
                 sf::Vector2f(xMapSize * 16, yMapSize * 16));
 
   window.setView(view);
-
+  window.setFramerateLimit(60);
+  
   //Simple Dungeon Generation
   //SimpleDungeonGenerator dungeon1(xMapSize, yMapSize);
   //TileMap map = dungeon1.Generate();
@@ -36,8 +37,22 @@ int main() {
     // handle events
     sf::Event event;
     while (window.pollEvent(event)) {
-      if (event.type == sf::Event::Closed)
+      if (event.type == sf::Event::Closed || event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
         window.close();
+      else if (event.type == sf::Event::KeyPressed)
+      {
+        if (event.key.code == sf::Keyboard::BackSpace)
+        {
+          window.setView(view);
+        }
+      }
+      if (event.type == sf::Event::MouseWheelScrolled)
+      {
+        if (event.mouseWheelScroll.delta > 0)
+          zoomViewAt({ event.mouseWheelScroll.x, event.mouseWheelScroll.y }, window, (1.f / zoomAmount));
+        else if (event.mouseWheelScroll.delta < 0)
+          zoomViewAt({ event.mouseWheelScroll.x, event.mouseWheelScroll.y }, window, zoomAmount);
+      }
     }
 
     // draw the map

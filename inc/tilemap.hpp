@@ -1,3 +1,6 @@
+#ifndef TILEMAP_HPP
+#define TILEMAP_HPP
+
 #include <SFML/Graphics.hpp>
 #include <cassert>
 
@@ -34,9 +37,11 @@ public:
 private:
 
   virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-  sf::VertexArray m_vertices;
-  sf::Texture m_tileset;
-  int m_xSize;
-  int m_ySize;
+  sf::VertexArray vertices_;
+  sf::Texture tileset_;
+  int xSize_;
+  int ySize_;
   int* tileLevel;
 };
+
+#endif

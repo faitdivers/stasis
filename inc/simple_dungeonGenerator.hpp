@@ -20,7 +20,7 @@ class SimpleDungeonGenerator {
 public:
 
   int Seed;
-  int m_xSize, m_ySize;
+  int xSize_, ySize_;
   int MaxFeatures;
   int ChanceRoom, ChanceCorridor;
 

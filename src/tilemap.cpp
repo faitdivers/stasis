@@ -1,8 +1,8 @@
 #include "../inc/tilemap.hpp"
 
 TileMap::TileMap(int xSize, int ySize) {
-  m_xSize = xSize;
-  m_ySize = ySize;
+  xSize_ = xSize;
+  ySize_ = ySize;
   tileLevel = new int[xSize*ySize];
   for (int i = 0; i < xSize*ySize; i++) {
     tileLevel[i] = static_cast<int>(Tile::DefaultBkgIni) + rand() % 4;
@@ -14,12 +14,12 @@ bool TileMap::load(const std::string& tileset,
                    unsigned int width,
                    unsigned int height) {
   // load the tileset texture
-  if (!m_tileset.loadFromFile(tileset))
+  if (!tileset_.loadFromFile(tileset))
     return false;
 
   // resize the vertex array to fit the level size
-  m_vertices.setPrimitiveType(sf::Quads);
-  m_vertices.resize(width * height * 4);
+  vertices_.setPrimitiveType(sf::Quads);
+  vertices_.resize(width * height * 4);
 
   // populate the vertex array, with one quad per tile
   for (unsigned int i = 0; i < width; ++i)
@@ -28,11 +28,11 @@ bool TileMap::load(const std::string& tileset,
       int tileNumber = tileLevel[i + j * width];
 
       // find its position in the tileset texture
-      int tu = tileNumber % (m_tileset.getSize().x / tileSize.x);
-      int tv = tileNumber / (m_tileset.getSize().x / tileSize.x);
+      int tu = tileNumber % (tileset_.getSize().x / tileSize.x);
+      int tv = tileNumber / (tileset_.getSize().x / tileSize.x);
 
       // get a pointer to the current tile's quad
-      sf::Vertex* quad = &m_vertices[(i + j * width) * 4];
+      sf::Vertex* quad = &vertices_[(i + j * width) * 4];
 
       // define its 4 corners
       quad[0].position = sf::Vector2f(i * tileSize.x,
@@ -62,7 +62,7 @@ void TileMap::SetTile(int x, int y, Tile tiletype) {
   assert(IsXInBounds(x));
   assert(IsYInBounds(y));
 
-  tileLevel[x + m_xSize * y] = static_cast<int>(tiletype);
+  tileLevel[x + xSize_ * y] = static_cast<int>(tiletype);
 }
 
 void TileMap::SetTiles(int xStart, int yStart, int xEnd, int yEnd, Tile tiletype) {
@@ -81,15 +81,15 @@ Tile TileMap::GetTile(int x, int y) const {
   assert(IsXInBounds(x));
   assert(IsYInBounds(y));
 
-  return static_cast<Tile>(tileLevel[x + m_xSize * y]);
+  return static_cast<Tile>(tileLevel[x + xSize_ * y]);
 }
 
 bool TileMap::IsXInBounds(int x) const {
-  return x >= 0 && x < m_xSize;
+  return x >= 0 && x < xSize_;
 }
 
 bool TileMap::IsYInBounds(int y) const {
-  return y >= 0 && y < m_ySize;
+  return y >= 0 && y < ySize_;
 }
 
 //Checks if the Tile type is either unused or DefaultBkg
@@ -123,8 +123,8 @@ void TileMap::draw(sf::RenderTarget& target, sf::RenderStates states) const {
   states.transform *= getTransform();
 
   // apply the tileset texture
-  states.texture = &m_tileset;
+  states.texture = &tileset_;
 
   // draw the vertex array
-  target.draw(m_vertices, states);
+  target.draw(vertices_, states);
 }

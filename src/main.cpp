@@ -1,6 +1,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "../inc/simple_dungeonGenerator.hpp"
+#include "../inc/simple_mazeGenerator.hpp"
 
 int main() {
   // create the window
@@ -15,8 +16,15 @@ int main() {
 
   window.setView(view);
 
+  //Simple Dungeon Generation
   SimpleDungeonGenerator dungeon1(xMapSize, yMapSize);
   TileMap map = dungeon1.Generate();
+
+  //Simple Maze Generation
+  //int complexity = 75;
+  //int density = 75;
+  //SimpleMazeGenerator maze1(xMapSize, yMapSize, complexity, density);
+  //TileMap map = maze1.Generate();
 
   // run the main loop
   while (window.isOpen()) {

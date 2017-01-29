@@ -1,4 +1,4 @@
-﻿################################################################################
+################################################################################
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
@@ -7,3 +7,5 @@
 /MVS/stasis.VC.VC.opendb
 /MVS/stasis.VC.db
 /MVS/.vs/stasis/v14
+bin
+sfml_exp_xcode-Info.plist

@@ -41,7 +41,7 @@ TileMap SimpleMazeGenerator::MakeMaze()
         {
             std::vector<std::vector<int>> neighbours;
             std::vector<int> v;
-            if (x > 1 && y < shape_[1])
+            if (x > step-1 && y < shape_[1])
             {
                 v = {x-step, y};
                 neighbours.push_back(v);
@@ -51,7 +51,7 @@ TileMap SimpleMazeGenerator::MakeMaze()
                 v = {x+step, y};
                 neighbours.push_back(v);
             }
-            if (y > 1 && x < shape_[0])
+            if (y > step-1 && x < shape_[0])
             {
                 v = {x, y-step};
                 neighbours.push_back(v);

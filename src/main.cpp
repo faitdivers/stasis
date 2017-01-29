@@ -21,8 +21,8 @@ int main() {
   //TileMap map = dungeon1.Generate();
 
   //Simple Maze Generation
-  float complexity = .5;
-  float density = .5;
+  float complexity = .75;
+  float density = .25;
   SimpleMazeGenerator maze1(xMapSize, yMapSize, complexity, density);
   TileMap map = maze1.Generate();
 

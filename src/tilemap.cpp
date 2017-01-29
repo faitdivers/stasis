@@ -3,7 +3,7 @@
 TileMap::TileMap(int xSize, int ySize) {
   xSize_ = xSize;
   ySize_ = ySize;
-  tileLevel = new int[xSize*ySize];
+  tileLevel.resize(xSize*ySize);
   for (int i = 0; i < xSize*ySize; i++) {
     tileLevel[i] = static_cast<int>(Tile::DefaultBkgIni) + rand() % 4;
   }

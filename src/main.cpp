@@ -38,12 +38,16 @@ int main() {
   TileMap map = bpath.Generate();
 
   // run the main loop
-  while (window.isOpen()) {
+  while (window.isOpen()) 
+  {
     // handle events
     sf::Event event;
-    while (window.pollEvent(event)) {
+    while (window.pollEvent(event)) 
+    {
       if (event.type == sf::Event::Closed || event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
+      {
         window.close();
+      }
       else if (event.type == sf::Event::KeyPressed)
       {
         //When backspace is clicked go back to default view
